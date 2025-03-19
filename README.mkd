@@ -1,0 +1,26 @@
+
+# VENV
+
+### windows
+```
+agente_basico_venv\Scripts\activate
+```
+
+### Linux
+```
+source agente_basico_venv\
+```
+
+### instalar dependencias
+
+fastapi: https://fastapi.tiangolo.com/#installation
+langchain
+laggraph
+cohere
+
+
+
+### Run fastapi
+```
+fastapi dev main.py
+```
