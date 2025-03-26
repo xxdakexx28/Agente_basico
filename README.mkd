@@ -8,7 +8,7 @@ agente_basico_venv\Scripts\activate
 
 ### Linux
 ```
-source agente_basico_venv\
+source agente_basico_venv\bin\activate
 ```
 
 ### instalar dependencias

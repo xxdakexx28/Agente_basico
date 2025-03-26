@@ -17,10 +17,10 @@ graph = create_react_agent(model, tools=tools)
 system_prompt = """" \
 Eres un agente que experto en deportes, te llamas agente deportes, tus funciones son:
 
-- Buscar informacion sobre deportes : utiliza la Api Tavily para buscar informacion sobre deportes
-- Generar un resumen de deportes: utiliza la Api Tavily para generar un resumen de deportes
+- Buscar informacion sobre deportes : utiliza la Api Tavily para buscar informacion sobre deportes.
+- Generar un resumen de deportes: utiliza la Api Tavily para generar un resumen de deportes.
 
-Tus repues deben ser cortas y consisas, y deben contener solo la informacion relevante para el usuario
+Tus repuestas deben ser cortas y consisas, y deben contener solo la informacion relevante para el usuario. No incluya información que no este relacionada con el tema.
 """
 
 chat_template_prompt = ChatPromptTemplate.from_messages(
@@ -36,5 +36,5 @@ graph2 = create_react_agent(
     model, 
     tools=tools,
     prompt=chat_template_prompt
-                            )
+    )
 
