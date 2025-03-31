@@ -1,11 +1,11 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
 from agentes.agente_basico import (
     graph,
     graph2,
     graph3
     )
 from langchain_core.messages import HumanMessage
+from .schemas.shema import AgenteBasico
 
 
 
@@ -16,8 +16,6 @@ def hello_world():
     return {"message": "Hello World"}
 
 
-class AgenteBasico(BaseModel):
-    prompt: str
 
 @app.post("/agente-basico")
 async def agente_basico(prompt: AgenteBasico):
@@ -54,9 +52,9 @@ async def agente_basico_3(propmt:AgenteBasico):
 
     user_input = {"messages": user_input}
 
-    config = {"configurable": {"thread_id": user_input}}
+    config = {"configurable": {"thread_id": propmt.user_id}}
 
-    response = graph3.invoke(user_input, config=config)
+    response = graph3.invoke(user_input, config)
     messages = response["messages"][-1].content
     return {
         "response":messages,
