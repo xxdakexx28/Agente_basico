@@ -1,7 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from agentes.agente_basico import (graph,graph2)
+from agentes.agente_basico import (
+    graph,
+    graph2,
+    graph3
+    )
 from langchain_core.messages import HumanMessage
+
 
 
 app = FastAPI()
@@ -42,4 +47,22 @@ def agente_basico_2(prompt: AgenteBasico):
     }
 
 
-    pass
+@app.post("/agente-basico-3")
+async def agente_basico_3(propmt:AgenteBasico):
+
+    user_input = [HumanMessage(content=propmt.prompt)]
+
+    user_input = {"messages": user_input}
+
+    config = {"configurable": {"thread_id": user_input}}
+
+    response = graph3.invoke(user_input, config=config)
+    messages = response["messages"][-1].content
+    return {
+        "response":messages,
+    }
+
+    
+
+
+    
